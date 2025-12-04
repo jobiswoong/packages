@@ -21,11 +21,7 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  webview_flutter_android:
-    git:
-      url: https://github.com/jobiswoong/packages.git
-      ref: develop
-      path: packages/webview_flutter/webview_flutter_android
+  webview_flutter_android: ^4.7.0
   webview_flutter_platform_interface: ^2.13.0
   webview_flutter_wkwebview: ^3.22.0
 
