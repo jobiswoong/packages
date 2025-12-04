@@ -143,9 +143,8 @@ public class WebViewClientProxyApi extends PigeonApiWebViewClient {
         @NonNull android.webkit.WebView view,
         @NonNull android.webkit.SslErrorHandler handler,
         @NonNull android.net.http.SslError error) {
-      handler.proceed();
-//      api.getPigeonRegistrar()
-//          .runOnMainThread(() -> api.onReceivedSslError(this, view, handler, error, reply -> null));
+      api.getPigeonRegistrar()
+          .runOnMainThread(() -> api.onReceivedSslError(this, view, handler, error, reply -> null));
     }
 
     @Override
