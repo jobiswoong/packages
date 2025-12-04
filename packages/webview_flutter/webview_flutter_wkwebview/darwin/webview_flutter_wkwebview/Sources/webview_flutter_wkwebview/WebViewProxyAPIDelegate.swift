@@ -53,6 +53,19 @@ class WebViewImpl: WKWebView {
             top: -insetToAdjust.top, left: -insetToAdjust.left, bottom: -insetToAdjust.bottom,
             right: -insetToAdjust.right)
         }
+
+        // Disable Flutter's delaying gesture recognizers to fix touch issues on iOS 26+
+        if #available(iOS 26, *) {
+          if let gestures = superview?.superview?.gestureRecognizers {
+            for gesture in gestures {
+              let gestureType = NSStringFromClass(type(of: gesture))
+              if gestureType == "DelayingGestureRecognizer" ||
+                 gestureType == "FlutterDelayingGestureRecognizer" {
+                gesture.isEnabled = false
+              }
+            }
+          }
+        }
       #endif
     }
   }
